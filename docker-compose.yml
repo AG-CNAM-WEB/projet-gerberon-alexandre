@@ -1,0 +1,26 @@
+services:
+  frontend:
+    container_name: projet-frontend
+    image: node
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+    working_dir: /app
+    command: sh -c "npm i -g @angular/cli && tail -f /dev/null"
+
+  backend:
+    container_name: projet-backend
+    image: node
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    command: sh -c "npm i -g nodemon && tail -f /dev/null"
+  adminer:
+    image: adminer
+    environment:
+      - ADMINER_DESIGN=hydra
+    ports:
+      - "8080:8080"

@@ -34,7 +34,7 @@ let userData = {
 };
 
 // Load product data from JSON file
-const productsData = JSON.parse(fs.readFileSync('../assets/mock/products.json', 'utf8'));
+const productsData = JSON.parse(fs.readFileSync('../frontend/src/assets/mock/products.json', 'utf8'));
 
 // Endpoint for user login
 app.post('/api/login', (req, res) => {
