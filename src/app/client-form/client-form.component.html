@@ -1,0 +1,81 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="form-container p-6 bg-white rounded shadow-md">
+
+  <div class="form-group">
+    <label for="prenom">Prénom: </label>
+    <input id="prenom" type="text" formControlName="prenom" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('prenom')?.invalid && clientForm.get('prenom')?.touched">
+  </div>
+
+  <div class="form-group">
+    <label for="nom">Nom: </label>
+    <input id="nom type" type="text" formControlName="nom" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('nom')?.invalid && clientForm.get('nom')?.touched">
+  </div>
+
+  <div class="form-group">
+    <label for="civilite">Civilité: </label>
+    <select id="civilite" formControlName="civilite" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('civilite')?.invalid && clientForm.get('civilite')?.touched">
+      <option value="M">M</option>
+      <option value="Mme">Mme</option>
+      <option value="Autre">Autre</option>
+    </select>
+  </div>
+
+  <div formGroupName="address" class="form-group">
+
+    <label for="rue">Adresse: </label>
+    <input id="rue" type="text" formControlName="rue" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('address.rue')?.invalid && clientForm.get('address.rue')?.touched">
+
+    <label for="codePostal">Code Postal: </label>
+    <input id="codePostal" type="text" pattern="[0-9]{5}" title="Format: 12345" formControlName="codePostal"
+      class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('address.codePostal')?.invalid && clientForm.get('address.codePostal')?.touched">
+
+    <label for="ville">Ville: </label>
+    <input id="ville" type="text" formControlName="ville" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('address.ville')?.invalid && clientForm.get('address.ville')?.touched">
+
+    <label for="pays">Pays: </label>
+    <input id="pays" type="text" formControlName="pays" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('address.pays')?.invalid && clientForm.get('address.pays')?.touched">
+
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email: </label>
+    <input id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" formControlName="email" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('email')?.invalid && clientForm.get('email')?.touched">
+  </div>
+
+  <div class="form-group">
+    <label for="telephone">Telephone: </label>
+    <input id="telephone" type="tel" pattern="[0-9]{10}" title="Format: 1234567890" formControlName="phone"
+      class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('phone')?.invalid && clientForm.get('phone')?.touched">
+  </div>
+
+  <div class="form-group">
+    <label for="login">Identifiant: </label>
+    <input id="login" type="text" formControlName="login" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('login')?.invalid && clientForm.get('login')?.touched">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Mot de passe: </label>
+    <input id="password" type="password" formControlName="password" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('password')?.invalid && clientForm.get('password')?.touched">
+  </div>
+
+  <div class="form-group">
+    <label for="passwordConfirm">Confirmer le mot de passe: </label>
+    <input id="passwordConfirm" type="password" formControlName="passwordConfirm" class="w-full p-2 border rounded"
+      [class.invalid-field]="clientForm.get('passwordConfirm')?.invalid && clientForm.get('passwordConfirm')?.touched">
+  </div>
+
+  <button [disabled]="!clientForm.valid" class="submit-button">Envoyer</button>
+
+  <p class="form-status mt-4">Status du formulaire: {{ clientForm.status }}</p>
+
+</form>

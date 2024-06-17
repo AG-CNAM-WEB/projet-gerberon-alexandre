@@ -1,0 +1,50 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Toyota Camry",
+        "brand": "Toyota",
+        "model": "Camry",
+        "year": 2025,
+        "price": 30000,
+        "image": "assets/images/2025-toyota-camry.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Honda Accord",
+        "brand": "Honda",
+        "model": "Accord",
+        "year": 2025,
+        "price": 28000,
+        "image": "assets/images/2023-honda-accord-interior.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Ford Mustang",
+        "brand": "Ford",
+        "model": "Mustang",
+        "year": 2023,
+        "price": 45000,
+        "image": "assets/images/ford-mustang-2023.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Chevrolet Camaro",
+        "brand": "Chevrolet",
+        "model": "Camaro",
+        "year": 2026,
+        "price": 50000,
+        "image": "assets/images/2015-569206-2016-chevrolet-camaro1.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Nissan Altima",
+        "brand": "Nissan",
+        "model": "Altima",
+        "year": 2023,
+        "price": 25000,
+        "image": "assets/images/2023-nissan-altima.jpg"
+      }
+    ]
+  }
+  

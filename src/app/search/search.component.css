@@ -1,0 +1,19 @@
+/* styles.css */
+
+/* Import des styles de Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Bordure rouge pour les champs invalides */
+.invalid-field {
+    border: 1px solid red;
+  }
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 300px;
+  }
+  

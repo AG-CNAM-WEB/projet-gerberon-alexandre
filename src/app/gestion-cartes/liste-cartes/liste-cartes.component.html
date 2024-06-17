@@ -1,0 +1,10 @@
+<!-- liste-cartes.component.html -->
+<div *ngIf="cartes$ | async as cartes">
+    <h2>Liste des cartes</h2>
+    <ul>
+      <li *ngFor="let carte of cartes">
+        {{ carte.nom }} - {{ carte.code | maskedNumber }} - {{ carte.ccv }} - {{ carte.mois }}/{{ carte.annee }}
+      </li>
+    </ul>
+  </div>
+  

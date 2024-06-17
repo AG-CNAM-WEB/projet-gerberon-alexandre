@@ -1,0 +1,42 @@
+/* styles.css */
+
+/* Import des styles de Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Style personnalisé pour le formulaire */
+.form-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Bordure rouge pour les champs invalides */
+.invalid-field {
+  border: 1px solid red;
+}
+
+/* Styles pour le bouton Envoyer */
+.submit-button {
+  background-color: #3490dc;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/* Styles pour les messages de statut du formulaire */
+.form-status {
+  margin-top: 1rem;
+}
+
+/* Media queries pour rendre le formulaire responsive */
+@media (max-width: 768px) {
+  .form-container {
+    max-width: 100%;
+  }
+}

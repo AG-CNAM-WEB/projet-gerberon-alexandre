@@ -1,0 +1,35 @@
+<form (submit)="search()" [formGroup]="searchForm" class="form-container p-6 bg-white rounded shadow-md flex flex-wrap justify-between">
+  <div class="mb-4 w-full md:w-48">
+    <label for="year">Année du véhicule :</label>
+    <input id="year" formControlName="year" type="number" class="p-2 border rounded">
+  </div>
+
+  <div class="mb-4 w-full md:w-48">
+    <label for="brand">Marque :</label>
+    <input id="brand" formControlName="brand" type="text" class="p-2 border rounded">
+  </div>
+
+  <div class="mb-4 w-full md:w-48">
+    <label for="model">Modèle :</label>
+    <input id="model" formControlName="model" type="text" class="p-2 border rounded">
+  </div>
+
+  <div class="mb-4 w-full md:w-48">
+    <label for="minPrice">Prix minimum :</label>
+    <input id="minPrice" formControlName="minPrice" type="number" class="p-2 border rounded"
+    [class.invalid-field]="searchForm.get('minPrice')?.invalid && searchForm.get('minPrice')?.touched">
+  </div>
+
+  <div class="mb-4 w-full md:w-48">
+    <label for="maxPrice">Prix maximum :</label>
+    <input id="maxPrice" formControlName="maxPrice" type="number" class="p-2 border rounded"
+    [class.invalid-field]="searchForm.get('maxPrice')?.invalid && searchForm.get('maxPrice')?.touched">
+  </div>
+
+  <div class="mb-4 flex items-end">
+    <!-- Bouton de réinitialisation des critères de recherche -->
+    <button type="button" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md" (click)="resetSearch()">Effacer</button>
+
+    <button [disabled]="!searchForm.valid" type="submit" class="bg-blue-500 text-white p-2 rounded ml-2">Rechercher</button>
+  </div>
+</form>

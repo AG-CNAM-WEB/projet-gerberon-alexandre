@@ -1,0 +1,17 @@
+<!-- header.component.html -->
+<header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+  <!-- Logo et Nom du Site -->
+  <div class="flex items-center">
+    <a routerLink="/" class="text-xl font-bold hover:text-gray-300">
+      <img src="assets/images/logo.jpeg" alt="Logo" class="h-16 w-auto mr-2">
+    </a>
+  </div>
+
+  <!-- Boutons de Connexion et Inscription -->
+  <div class="flex items-center">
+    <a routerLink="/catalogue" class="mr-4 hover:text-gray-300">Catalogue</a>
+    <a routerLink="/login" class="mr-4 hover:text-gray-300">Login</a>
+    <a routerLink="/form" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Sign Up</a>
+    <a routerLink="/panier" class="ml-4 hover text-gray-300">Panier ({{ (panier$ | async)?.items?.length }})</a>
+  </div>
+</header>
