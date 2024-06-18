@@ -7,11 +7,20 @@
     </a>
   </div>
 
-  <!-- Boutons de Connexion et Inscription -->
+  <!-- Boutons de Connexion et Inscription ou Profil -->
   <div class="flex items-center">
     <a routerLink="/catalogue" class="mr-4 hover:text-gray-300">Catalogue</a>
-    <a routerLink="/login" class="mr-4 hover:text-gray-300">Login</a>
-    <a routerLink="/form" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Sign Up</a>
+
+    <ng-container *ngIf="isLoggedIn; else loggedOut">
+      <a routerLink="/profile" class="mr-4 hover:text-gray-300">Profile</a>
+      <a (click)="logout()" class="mr-4 hover:text-gray-300">Logout</a>
+    </ng-container>
+
+    <ng-template #loggedOut>
+      <a routerLink="/login" class="mr-4 hover:text-gray-300">Login</a>
+      <a routerLink="/form" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Sign Up</a>
+    </ng-template>
+
     <a routerLink="/panier" class="ml-4 hover text-gray-300">Panier ({{ (panier$ | async)?.items?.length }})</a>
   </div>
 </header>

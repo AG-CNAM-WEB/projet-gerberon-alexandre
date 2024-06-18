@@ -6,10 +6,11 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { CarteFormComponent } from './gestion-cartes/carte-form/carte-form.component';
 import { PanierComponent } from './panier/panier.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'form', component: ClientFormComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'catalogue', component: CatalogueComponent },
   { path: 'panier', component: PanierComponent },
   { path: 'carte', component: CarteFormComponent },

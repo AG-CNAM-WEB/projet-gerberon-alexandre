@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { PanierState, PanierStateModel } from '../store/panier.state';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,12 +18,23 @@ export class HeaderComponent implements OnInit {
   @Select(PanierState)
   panier$!: Observable<PanierStateModel>;
 
-  constructor() { }
+  isLoggedIn: boolean = false; // Ajoutez cette propriété
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     // Abonnez-vous à l'observable panier$ pour mettre à jour le nombre d'articles
     this.panier$.subscribe(panier => {
       this.nombreArticlesPanier = panier.items.length;
     });
+    // Abonnez-vous à l'état de connexion
+    this.authService.loggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }
