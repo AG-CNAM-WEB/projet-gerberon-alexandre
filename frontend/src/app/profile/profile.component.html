@@ -2,30 +2,30 @@
   <h2>Récapitulatif de votre profil :</h2>
 
   <div>
-    <strong>Prénom:</strong> {{ profileData?.prenom }}
+    <strong>Prénom:</strong> {{ profileData?.user.prenom }}
   </div>
 
   <div>
-    <strong>Nom:</strong> {{ profileData?.nom }}
+    <strong>Nom:</strong> {{ profileData?.user.nom }}
   </div>
 
   <div>
-    <strong>Civilité:</strong> {{ profileData?.civilite }}
+    <strong>Civilité:</strong> {{ profileData?.user.civilite }}
   </div>
 
   <div>
-    <strong>Adresse:</strong> {{ profileData?.address.rue }}, {{ profileData?.address.codePostal }}, {{ profileData?.address.ville }}, {{ profileData?.address.pays }}
+    <strong>Adresse:</strong> {{ profileData?.user.address.rue }}, {{ profileData?.user.address.codePostal }}, {{ profileData?.user.address.ville }}, {{ profileData?.user.address.pays }}
   </div>
 
   <div>
-    <strong>Email:</strong> {{ profileData?.email }}
+    <strong>Email:</strong> {{ profileData?.user.email }}
   </div>
 
   <div>
-    <strong>Téléphone:</strong> {{ profileData?.phone }}
+    <strong>Téléphone:</strong> {{ profileData?.user.phone }}
   </div>
 
   <div>
-    <strong>Identifiant:</strong> {{ profileData?.login }}
+    <strong>Identifiant:</strong> {{ profileData?.user.login }}
   </div>
 </div>
