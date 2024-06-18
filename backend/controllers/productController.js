@@ -32,7 +32,16 @@ class ProductController {
     }
   }
 
-  // Ajoutez ici d'autres méthodes pour gérer les routes CRUD des produits si nécessaire
+  static async searchProducts(req, res) {
+    try {
+      const query = req.query.q;
+      console.log("query :", query);
+      const products = await ProductService.searchProducts(query);
+      res.json({ success: true, products });
+    } catch (error) {
+      res.status(500).json({ success: false, message: 'Error searching products' });
+    }
+  }
 }
 
 module.exports = ProductController;

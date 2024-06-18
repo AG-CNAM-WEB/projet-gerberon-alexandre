@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Store } from '@ngxs/store';
 import { AjouterProduit } from '../store/panier.actions';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue',
@@ -14,13 +15,24 @@ export class CatalogueComponent implements OnInit {
   
   constructor(
     private productService: ProductService,
-    private store: Store
+    private store: Store,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(data => {
-      this.products = data.products;
-      this.filteredProducts = this.products; // Initialisez les produits filtrés avec tous les produits au début
+    this.route.queryParams.subscribe(params => {
+      const searchQuery = params['search'];
+      if (searchQuery) {
+        this.productService.searchProducts(searchQuery).subscribe(data => {
+          this.products = data.products;
+          this.filteredProducts = this.products;
+        });
+      } else {
+        this.productService.getProducts().subscribe(data => {
+          this.products = data.products;
+          this.filteredProducts = this.products;
+        });
+      }
     });
   }
 

@@ -9,6 +9,11 @@
 
   <!-- Boutons de Connexion et Inscription ou Profil -->
   <div class="flex items-center">
+    <form (submit)="onSearch(searchQuery.value)" class="flex items-center">
+      <input #searchQuery type="text" placeholder="Rechercher un produit" class="py-1 px-2 rounded-l text-black">
+      <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded-r hover:bg-blue-700">Rechercher</button>
+    </form>
+
     <a routerLink="/catalogue" class="mr-4 hover:text-gray-300">Catalogue</a>
 
     <ng-container *ngIf="isLoggedIn; else loggedOut">

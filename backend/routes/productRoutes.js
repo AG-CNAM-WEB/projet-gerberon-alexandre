@@ -10,6 +10,6 @@ router.get('/products', ProductController.getAllProducts);
 // Route pour récupérer un produit par ID
 router.get('/products/:id', ProductController.getProductById);
 
-// Ajoutez ici d'autres routes pour la création, la mise à jour et la suppression de produits si nécessaire
+router.get('/search', ProductController.searchProducts);
 
 module.exports = router;

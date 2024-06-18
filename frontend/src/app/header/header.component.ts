@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PanierState, PanierStateModel } from '../store/panier.state';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false; // Ajoutez cette propriété
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
     // Abonnez-vous à l'observable panier$ pour mettre à jour le nombre d'articles
@@ -36,5 +37,9 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  onSearch(query: string): void {
+        this.router.navigate(['/catalogue'], { queryParams: { search: query } });
   }
 }

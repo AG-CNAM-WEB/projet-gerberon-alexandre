@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,5 +12,10 @@ export class ProductBackendService {
 
   getProducts(): Observable<any> {
     return this.http.get(`${this.productsUrl}products`);
+  }
+
+  searchProducts(query: string): Observable<any> {
+    let params = new HttpParams().set('q', query);
+    return this.http.get(`${this.productsUrl}/search`, { params });
   }
 }

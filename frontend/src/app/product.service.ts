@@ -11,4 +11,8 @@ export class ProductService {
   getProducts(): Observable<any> {
     return this.productBackendService.getProducts();
   }
+
+  searchProducts(query: string): Observable<any> {
+    return this.productBackendService.searchProducts(query);
+  }
 }
