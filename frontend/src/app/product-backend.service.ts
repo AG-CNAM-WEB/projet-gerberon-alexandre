@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductBackendService {
-  private productsUrl = 'http://localhost:3000/api/products'; // Endpoint de l'API
+  private productsUrl = 'http://localhost:3000/api/'; // Endpoint de l'API
 
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<any> {
-    return this.http.get(this.productsUrl);
+    return this.http.get(`${this.productsUrl}products`);
   }
 }
