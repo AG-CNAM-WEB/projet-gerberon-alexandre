@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarteService } from '../gestion-cartes/carte.service';
+import { PayerPanier } from '../store/panier.actions';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-paiement',
@@ -10,16 +12,30 @@ import { CarteService } from '../gestion-cartes/carte.service';
 })
 export class PaiementComponent implements OnInit {
   paiementEffectue: boolean = false;
-  constructor(private router: Router, private carteService: CarteService) {}
+  cartes: any[] = [];
+  carteSelectionnee: any = null;
+  constructor(private router: Router, private carteService: CarteService, private store: Store) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.carteService.getCartes().subscribe(cartes => {
+      this.cartes = cartes;
+    });
+  }
 
   onPaiementEffectue(): void {
     // Logique de paiement (simulé)
-    console.log('Paiement effectué avec succès!');
-    this.paiementEffectue = true;
-    setTimeout(() => {
-      this.router.navigate(['/']);
-    }, 3000);
+    if (this.cartes.length > 0 && this.carteSelectionnee) {
+      console.log('Paiement effectué avec succès!');
+      this.paiementEffectue = true;
+      this.store.dispatch(new PayerPanier());
+      setTimeout(() => {
+        this.router.navigate(['/']);
+      }, 3000);
+    } else {
+      console.log('Impossible de valider le paiement : aucune carte sélectionnée');
+    }
+  }
+  selectionnerCarte(carte: any): void {
+    this.carteSelectionnee = carte;
   }
 }

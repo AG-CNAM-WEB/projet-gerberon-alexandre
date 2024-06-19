@@ -8,9 +8,15 @@
     <hr>
   
     <!-- Utilisation du composant ListeCartesComponent -->
-    <app-liste-cartes></app-liste-cartes>
+    <app-liste-cartes (carteSelectionnee)="selectionnerCarte($event)"></app-liste-cartes>
   
-    <button type="button" class="btn btn-primary" (click)="onPaiementEffectue()">Valider le paiement</button>
+    <button 
+      type="button" 
+      class="btn btn-primary" 
+      (click)="onPaiementEffectue()"
+      [disabled]="cartes.length === 0 || !carteSelectionnee">
+      Valider le paiement
+    </button>
   
     <!-- Affichage du message de succès -->
     <div *ngIf="paiementEffectue" class="alert alert-success mt-3" role="alert">

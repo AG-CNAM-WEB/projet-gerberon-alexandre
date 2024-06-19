@@ -1,7 +1,6 @@
-// liste-cartes.component.ts
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CarteService } from '../carte.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-liste-cartes',
@@ -9,11 +8,18 @@ import { CarteService } from '../carte.service';
   styleUrls: ['./liste-cartes.component.css']
 })
 export class ListeCartesComponent implements OnInit {
-  cartes$!: Observable<any[]>;
+  @Output() carteSelectionnee = new EventEmitter<any>();
+  cartes$: Observable<any[]>;
+  carteSelectionneeLocal: any = null;
 
-  constructor(private carteService: CarteService) {}
-
-  ngOnInit(): void {
+  constructor(private carteService: CarteService) {
     this.cartes$ = this.carteService.getCartes();
+  }
+
+  ngOnInit(): void {}
+
+  selectionnerCarte(carte: any): void {
+    this.carteSelectionneeLocal = carte;
+    this.carteSelectionnee.emit(carte);
   }
 }

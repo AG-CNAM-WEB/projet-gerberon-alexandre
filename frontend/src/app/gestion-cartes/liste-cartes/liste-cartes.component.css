@@ -1,6 +1,6 @@
-/* styles.css */
-
-/* Import des styles de Tailwind CSS */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/* liste-cartes.component.css */
+.selected {
+    background-color: #d3d3d3; /* Couleur pour la sélection */
+    border: 2px solid #000; /* Bordure pour la sélection */
+  }
+  
