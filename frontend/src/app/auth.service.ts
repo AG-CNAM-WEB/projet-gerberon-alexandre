@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, tap } from 'rxjs';
+import { environment } from '../environments/environment';
 
 interface LoginResponse {
   success: boolean;
@@ -12,7 +13,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/';
+  //private apiUrl = 'http://localhost:3000/api/';
   private token: string | null = null;
   private loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn());
 
@@ -21,7 +22,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}auth/login`, { username, password }).pipe(
+    return this.http.post<LoginResponse>(environment.backendAuth.login, { username, password }).pipe(
       tap(response => {
         if (response.success) {
           this.setToken(response.token);
@@ -32,7 +33,7 @@ export class AuthService {
   }
 
   register(userDetails: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}auth/register`, userDetails).pipe(
+    return this.http.post<any>(environment.backendAuth.register, userDetails).pipe(
       tap(response => {
         if (response.success) {
           this.setToken(response.token);
@@ -66,7 +67,7 @@ export class AuthService {
 
   getProfile(): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.get(`${this.apiUrl}user/profile`, { headers });
+    return this.http.get(environment.backendProfile.profile, { headers });
   }
 
   logout(): void {
