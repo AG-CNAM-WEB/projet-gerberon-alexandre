@@ -10,7 +10,8 @@ export const environment = {
     search: '/api/search'
   },
   backendProfile: {
-    profile: '/api/user/profile'
+    profile: '/api/user/profile',
+    updateProfile: '/api/user/profile'
   }
   //backendCollections: '/api/products/collections',
   //backendCreditCards: '/api/credit-cards',

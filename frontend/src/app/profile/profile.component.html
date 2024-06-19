@@ -28,4 +28,58 @@
   <div>
     <strong>Identifiant:</strong> {{ profileData?.user.login }}
   </div>
+
+  <hr>
+
+  <h2>Modifier votre profil :</h2>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="prenom">Prénom:</label>
+      <input id="prenom" type="text" formControlName="prenom" class="w-full p-2 border rounded">
+    </div>
+    <div class="form-group">
+      <label for="nom">Nom:</label>
+      <input id="nom" type="text" formControlName="nom" class="w-full p-2 border rounded">
+    </div>
+    <div class="form-group">
+      <label for="civilite">Civilité:</label>
+      <select id="civilite" formControlName="civilite" class="w-full p-2 border rounded">
+        <option value="M">M</option>
+        <option value="Mme">Mme</option>
+        <option value="Autre">Autre</option>
+      </select>
+    </div>
+    <div formGroupName="address">
+      <label for="rue">Adresse:</label>
+      <input id="rue" type="text" formControlName="rue" class="w-full p-2 border rounded">
+      <label for="codePostal">Code Postal:</label>
+      <input id="codePostal" type="text" formControlName="codePostal" class="w-full p-2 border rounded">
+      <label for="ville">Ville:</label>
+      <input id="ville" type="text" formControlName="ville" class="w-full p-2 border rounded">
+      <label for="pays">Pays:</label>
+      <input id="pays" type="text" formControlName="pays" class="w-full p-2 border rounded">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email" class="w-full p-2 border rounded">
+    </div>
+    <div class="form-group">
+      <label for="phone">Téléphone:</label>
+      <input id="phone" type="tel" formControlName="phone" class="w-full p-2 border rounded">
+    </div>
+    <div class="form-group">
+      <label for="login">Identifiant:</label>
+      <input id="login" type="text" formControlName="login" class="w-full p-2 border rounded">
+    </div>
+    <button [disabled]="!profileForm.valid" class="submit-button">Mettre à jour</button>
+  </form>
+
+  <!-- Affichage du message de succès ou d'erreur -->
+  <div *ngIf="updateSuccess" class="alert alert-success mt-3" role="alert">
+    Profil mis à jour avec succès !
+  </div>
+  <div *ngIf="updateError" class="alert alert-danger mt-3" role="alert">
+    Échec de la mise à jour du profil.
+  </div>
 </div>

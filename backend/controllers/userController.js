@@ -28,7 +28,7 @@ class UserController {
 
   static async updateProfile(req, res) {
     try {
-      const userId = req.userId;
+      const userId = req.id;
       const updatedData = req.body;
 
       const user = await UserService.updateUser(userId, updatedData);
