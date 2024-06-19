@@ -50,8 +50,8 @@ class AuthController {
       }
 
       // Vérifier le mot de passe
-      const isPasswordValid = user.password.bcrypt === password.bcrypt; // Utilisez une méthode sécurisée pour comparer les mots de passe, par exemple bcrypt
-      console.log('password ok');
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      console.log('compare is valid', isPasswordValid)
       if (!isPasswordValid) {
         return res.status(401).json({ success: false, message: 'Invalid password' });
       }
