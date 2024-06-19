@@ -7,6 +7,7 @@ import { CarteFormComponent } from './gestion-cartes/carte-form/carte-form.compo
 import { PanierComponent } from './panier/panier.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
+import { PaiementComponent } from './paiement/paiement.component';
 
 const routes: Routes = [
   { path: 'form', component: ClientFormComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'carte', component: CarteFormComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: CatalogueComponent },
+  { path: 'paiement', component: PaiementComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

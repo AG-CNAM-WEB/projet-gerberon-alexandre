@@ -11,3 +11,11 @@ export class SupprimerProduit {
   static readonly type = '[Panier] Supprimer produit';
   constructor(public produit: Produit) {}
 }
+
+export class PayerPanier {
+  static readonly type = '[Panier] Payer panier';
+}
+
+export class ViderPanier {
+  static readonly type = '[Panier] Vider panier';
+}

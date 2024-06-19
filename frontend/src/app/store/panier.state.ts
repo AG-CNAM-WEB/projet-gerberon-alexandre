@@ -1,10 +1,11 @@
+// panier.state.ts
 import { State, Action, StateContext } from '@ngxs/store';
-import { AjouterProduit, SupprimerProduit } from './panier.actions';
+import { AjouterProduit, SupprimerProduit, PayerPanier, ViderPanier } from './panier.actions';
 import { Injectable } from '@angular/core';
 
 export interface Produit {
-    nom: string;
-    prix: number;
+  nom: string;
+  prix: number;
 }
 
 export interface PanierStateModel {
@@ -41,5 +42,21 @@ export class PanierState {
         items: nouveauxProduits
       });
     }
+  }
+
+  @Action(PayerPanier)
+  payerPanier(ctx: StateContext<PanierStateModel>) {
+    // Simulation de paiement réussi
+    console.log('Paiement effectué avec succès.');
+
+    // Vider le panier
+    ctx.dispatch(new ViderPanier());
+  }
+
+  @Action(ViderPanier)
+  viderPanier(ctx: StateContext<PanierStateModel>) {
+    ctx.setState({
+      items: []
+    });
   }
 }

@@ -19,6 +19,7 @@ import { NgxsModule } from '@ngxs/store';
 import { PanierState } from './store/panier.state';
 import { PanierComponent } from './panier/panier.component';
 import { LoginComponent } from './login/login.component';
+import { PaiementComponent } from './paiement/paiement.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
         CatalogueComponent,
         SearchComponent,
         PanierComponent,
-        LoginComponent
+        LoginComponent,
+        PaiementComponent
     ],
     providers: [ProductBackendService],
     bootstrap: [AppComponent],

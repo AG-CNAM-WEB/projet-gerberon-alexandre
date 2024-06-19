@@ -1,11 +1,12 @@
 <!-- panier.component.html -->
 <div *ngIf="panier$ | async as panier">
-    <h2>Panier</h2>
-    <ul>
-      <li *ngFor="let produit of panier.items">
-        {{ produit.nom }} - {{ produit.prix | currency:'EUR':'symbol':'1.2-2' }}
-        <button (click)="supprimerProduit(produit)">Supprimer</button>
-      </li>
-    </ul>
-  </div>
-  
+  <h2>Panier</h2>
+  <ul>
+    <li *ngFor="let produit of panier.items">
+      {{ produit.nom }} - {{ produit.prix | currency:'EUR':'symbol':'1.2-2' }}
+      <button (click)="supprimerProduit(produit)">Supprimer</button>
+    </li>
+  </ul>
+  <button  *ngIf="isPanierNonVide(panier.items)" type="button" class="btn btn-primary" (click)="payerPanier()">Payer</button>
+  <p *ngIf="!isPanierNonVide(panier.items)" class="text-muted">Votre panier est vide.</p>
+</div>
