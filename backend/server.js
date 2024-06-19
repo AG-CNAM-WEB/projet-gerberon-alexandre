@@ -13,9 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Middleware for CORS
-app.use(cors({
-  origin: 'http://localhost:4200',
-}));
+app.use(cors());
 
 // Routes
 app.use('/api/auth', authRoutes);
