@@ -16,9 +16,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api', productRoutes);
+app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
+app.use('/', productRoutes);
 
 // Synchronize with database and start the server
 sequelize.sync().then(() => {
